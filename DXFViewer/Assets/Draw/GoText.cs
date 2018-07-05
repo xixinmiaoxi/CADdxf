@@ -33,6 +33,7 @@ public class GoText : MonoBehaviour, IResizeObject
         transform.position = new Vector3((float)item.C10, (float)item.C20, (float)item.C30);
         tm.text = item.C1;
         tm.characterSize = (float)item.C40/5;
+        tm.transform.rotation = Quaternion.Euler(0, 0, (float)item.C50);
 
         HideSize = tm.characterSize * tm.text.Length;
 

@@ -39,7 +39,9 @@ public class Manager : MonoBehaviour
     }
 
     string path = "";
-
+    /// <summary>
+    ///载入的同时怎样清除上一次已经载入的文档,使得只显示当前图形文件？？？
+    /// </summary>
     public void OnGUI()
     {
         GUI.Label(new Rect(10, 25, 100, 20), "DXF文件地址");
@@ -47,7 +49,7 @@ public class Manager : MonoBehaviour
 
         if (GUI.Button(new Rect(10, 75, 75, 20), "载入文件"))
         {
-            LoadDXF(path);
+            LoadDXF(path); 
         }
 
         if (GUI.Button(new Rect(10, 100, 75, 20), "测试文件1"))

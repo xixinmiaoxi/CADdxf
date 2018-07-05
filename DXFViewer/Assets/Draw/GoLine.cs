@@ -102,7 +102,9 @@ public class GoLine : MonoBehaviour, IResizeObject
 
     public void SetSetWidth()
     {
-        lr.SetWidth(GoView.Content.Zoom * ZoomAdjust, GoView.Content.Zoom * ZoomAdjust);
+        lr.startWidth = GoView.Content.Zoom * ZoomAdjust;
+        lr.endWidth = GoView.Content.Zoom * ZoomAdjust;
+        //lr.SetWidth(GoView.Content.Zoom * ZoomAdjust, GoView.Content.Zoom * ZoomAdjust);
     }
 
     //只会隐藏
