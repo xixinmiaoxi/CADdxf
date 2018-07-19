@@ -35,7 +35,7 @@ public class GoText : MonoBehaviour, IResizeObject
         tm.characterSize = (float)item.C40/5;
         tm.transform.rotation = Quaternion.Euler(0, 0, (float)item.C50);
 
-        HideSize = tm.characterSize * tm.text.Length;
+        //HideSize = tm.characterSize * tm.text.Length;
 
         this.gameObject.isStatic = true;
     }

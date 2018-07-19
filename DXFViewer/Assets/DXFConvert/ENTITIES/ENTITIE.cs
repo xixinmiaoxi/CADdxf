@@ -12,29 +12,47 @@ namespace DXFConvert
         public ENTITIE() { }
 
         //-1	APP：图元名（每次打开图形时都会发生变化）
+        public string C1 { get; set; }
         //0	图元类型
+        public string C0 { get; set; }
         //5	句柄
+        public int C5 { get; set; }
         //102	应用程序定义的组的开始	“{application_name”（可选）应用程序定义的代码	102 组中的代码和值由应用程序定义（可选）
         //102	组的结束“}”（可选）
         //102	“{ACAD_REACTORS”表示 AutoCAD 永久反应器组的开始。仅当将永久反应器附加到此对象时，此组才存在（可选）
         //330	所有者词典的软指针 ID/句柄（可选）
+        public int C330 { get; set; }
         //102	组的结束“}”（可选）
         //102	“{ACAD_XDICTIONARY”表示扩展词典组的开始。仅当将扩展词典附加到此对象时，此组才存在（可选）
         //360	所有者词典的硬所有者 ID/句柄（可选）
+        public int C360 { get; set; }
         //102	组的结束“}”（可选）
         //330	所有者 BLOCK_RECORD 对象的软指针 ID/句柄
+       
         //100	子类标记 (AcDbEntity)
-        //67	不存在或零表示图元位于模型空间中。1 表示图元位于图纸空间中（可选）
+
+        //67	不存在或零表示图元位于模型空间中。1 表示图元位于图纸空间中（可选）,默认值是0
+        public int C67 { get; set; }
         //410	APP：布局选项卡名
-        public string C8 { get; set; }  //8	图层名
-        //6	线型名（如果不是“BYLAYER”，则出现）。特殊名称“BYBLOCK”表示可变的线型（可选）
+
+        //8	图层名
+        public string C8 { get; set; }  
+        //6	线型名（如果不是“BYLAYER”，则出现）。特殊名称“BYBLOCK”表示可变的线型（可选）,默认BYLAYER
+        public string C6 { get; set; }
         //347	材质对象的硬指针 ID/句柄（如果不是“BYLAYER”，则出现）
+        public string C347 { get; set; }
         //62	颜色号（如果不是“BYLAYER”，则出现）；零表示“BYBLOCK”（可变的）颜色；256 表示“BYLAYER”；负值表示层已关闭（可选）
+        public string C62 { get; set; }
         //370	线宽枚举值。作为 16 位整数存储和移动。
+        public int C370 { get; set; }
         //48	线型比例（可选）
+        public float C48 { get; set; }
         //60	对象可见性（可选）：0 = 可见；1 = 不可见
+        public int C60 { get; set; }
         //92	后面的 310 组（二进制数据块记录）中表示的代理图元图形中的字节数（可选）
+
         //310	代理图元图形数据（多行；每行最多 256 个字符）（可选）
+        public string C310 { get; set; }
         //420	一个 24 位颜色值，应按照值为 0 到 255 的字节进行处理。最低字节是蓝色值，中间字节是绿色值，第三个字节是红色值。最高字节始终为 0。该组码不能用于自定义图元本身的数据，因为该组码是为 AcDbEntity 类级别颜色数据和 AcDbEntity 类级别透明度数据保留的。
         //430	颜色名。该组码不能用于自定义图元本身的数据，因为该组码是为 AcDbEntity 类级别颜色数据和 AcDbEntity 类级别透明度数据保留的。
         //440	透明度值。该组码不能用于自定义图元本身的数据，因为该组码是为 AcDbEntity 类级别颜色数据和 AcDbEntity 类级别透明度数据保留的。
@@ -53,6 +71,19 @@ namespace DXFConvert
             switch (prop.Code)
             {
                 case 8: C8 = prop.Value; break;
+                case(-1): C1 = prop.Value; break;
+                case 0: C0 = prop.Value; break;
+                case 5: C5 = prop.Value.ToInt(); break;
+                case 330: C330 = prop.Value.ToInt(); break;
+                case 360: C360 = prop.Value.ToInt(); break;
+                case 67: C67 = prop.Value.ToInt(); break;
+                case 6: C6 = prop.Value; break;
+                case 347: C347 = prop.Value; break;
+                case 62: C62 = prop.Value; break;
+                case 370: C370 = prop.Value.ToInt(); break;
+                case 48: C48 = prop.Value.ToFloat(); break;
+                case 60: C60 = prop.Value.ToInt(); break;
+                case 310: C310 = prop.Value; break;
                 default:
                     return base.ReadProperty(prop);
             }

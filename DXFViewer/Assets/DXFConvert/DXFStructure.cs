@@ -148,7 +148,8 @@ namespace DXFConvert
         /// <summary>
         /// 压缩最大角度
         /// </summary>
-        public double Deg2 = 20d;
+       // public double Deg2 = 20d;
+        public double Deg2 = 1d;
 
         /// <summary>
         /// 压缩掉的最小长度
@@ -157,8 +158,8 @@ namespace DXFConvert
         /// <summary>
         /// 压缩掉的最大长度
         /// </summary>
-        public double Length2 = 800d;
-
+        //public double Length2 = 800d;
+        public double Length2 = 1d;
         /// <summary>
         /// 双倍压缩，压缩掉的内容更多，但是图形更加失真
         /// </summary>
